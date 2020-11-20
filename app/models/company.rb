@@ -1,6 +1,10 @@
 class Company < ApplicationRecord
   has_rich_text :description
 
+  validates :brand_color, format: {
+    with: /#(?:[0-9a-fA-F]{3}){1,2}/i
+  }, if: -> { brand_color.present? }
+
   validates :email, format: {
     with:    /\A[^@\s]+@getmainstreet.com/,
     message: 'The email should be a valid email with getmainstreet domain.'

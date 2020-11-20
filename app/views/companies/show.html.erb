@@ -8,7 +8,7 @@
       <%= link_to 'Edit', edit_company_path %>
     </div>
   </div>
-  <div class="bg-success">
+  <div style="background-color: <%= @company.brand_color %>">
     <div class="container p-5 text-white">
       <h1><%= @company.name %></h1>
       <h3><mark><%= "#{@company.city}, #{@company.state}" %></mark></h3>
@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <div class="bg-success text-white text-center py-3">
+  <div class="text-white text-center py-3" style="background-color: <%= @company.brand_color %>">
     <p class="lead"><%= @company.phone %> — <%= @company.email %></p>
   </div>
 </div>
