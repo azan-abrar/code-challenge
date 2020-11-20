@@ -1,5 +1,13 @@
 <div class="py-5">
-  <%= form_for @company do |f| %>
+  <%= form_for @company, html: { id: 'company-form' } do |f| %>
+
+    <% if @company.errors.present? %>
+      <% @company.errors.each do |k, v| %>
+        <div class="alert alert-danger">
+          <%= v %>
+        </div>
+      <% end %>
+    <% end %>
 
     <div class="row my-lg-3">
       <div class="col-lg-3">
@@ -7,11 +15,10 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :name, class: "form-control", placeholder: "Company Name", required: true %>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Company Name', required: true %>
         </div>
       </div>
     </div>
-
 
     <div class="row my-lg-3">
       <div class="col-lg-3">
@@ -19,7 +26,7 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :zip_code, class: "form-control", placeholder: "93003", required: true %>
+          <%= f.text_field :zip_code, class: 'form-control', placeholder: '93003', required: true %>
         </div>
       </div>
     </div>
@@ -35,14 +42,13 @@
       </div>
     </div>
 
-
     <div class="row my-lg-3">
       <div class="col-lg-3">
         <label><strong>Phone</strong><br><small class="text-muted">Shown in marketing</small></label>
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :phone, class: "form-control", placeholder: "555-555-5555"%>
+          <%= f.text_field :phone, class: 'form-control', placeholder: '555-555-5555' %>
         </div>
       </div>
     </div>
@@ -53,7 +59,8 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.text_field :email, class: 'form-control', id: 'company-email-field', placeholder: 'hello@getmainstreet.com' %>
+          <span id="email-field-error"></span>
         </div>
       </div>
     </div>
@@ -64,7 +71,7 @@
       </div>
       <div class="col-lg offset-lg-1">
           <div data-controller="services" class="form-group">
-            <%= f.select :services, options_for_select(["Interior Painting", "Commercial Painting", "Exterior Painting"], @company.services), {include_blank: true, required: false}, multiple: true, "data-target": "services.select2", class: "form-control" %>
+            <%= f.select :services, options_for_select(['Interior Painting', 'Commercial Painting', 'Exterior Painting'], @company.services), { include_blank: true, required: false }, multiple: true, 'data-target': 'services.select2', class: 'form-control' %>
           </div>
       </div>
     </div>
@@ -72,7 +79,7 @@
     <div class="row my-lg-3">
       <div class="col">
         <div class="form-group">
-          <%= f.submit class: "btn btn-success"%>
+          <%= f.submit class: 'btn btn-success', id: 'company-form-submit' %>
         </div>
       </div>
     </div>
