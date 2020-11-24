@@ -14,10 +14,11 @@
   <body>
     <%= render 'shared/notices' %>
     <%= yield %>
-    <div class="fixed-bottom bg-light">
+    <div class="fixed-bottom bg-light border-top">
     <div class="container py-3">
-      <%= link_to 'Home', root_path, class: 'mr-5'  %>
-      <%= link_to 'Companies', companies_path, class: 'mr-5' %>
+      <%= link_to 'Home', root_path, class: 'mr-3 text-dark'  %>
+      <span class="d-inline mr-3">/</span>
+      <%= link_to 'Companies', companies_path, class: 'mr-3 text-dark' %>
     </div>
     </div>
   </body>

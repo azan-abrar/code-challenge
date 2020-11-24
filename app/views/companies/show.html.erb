@@ -1,41 +1,40 @@
 <div class="container py-5">
-  <h3>Company</h3>
-  <div class="row">
-    <div class="col">
-      <%= link_to '< Companies', companies_path %>
-    </div>
-    <div class="col text-right">
-      <%= link_to 'Edit', edit_company_path %>
-    </div>
+  <h3 class="mb-3 border-bottom pb-3">Company</h3>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <%= link_to '< Companies', companies_path, class: 'badge badge-success p-2' %>
+    <%= link_to 'Edit', edit_company_path, class: 'btn btn-primary' %>
   </div>
-  <div style="background-color: <%= @company.brand_color %>">
-    <div class="container p-5 text-white">
-      <h1><%= @company.name %></h1>
-      <h3><mark><%= "#{@company.city}, #{@company.state}" %></mark></h3>
+  <div id="show-header" style="background-color: <%= @company.brand_color.presence || '#28a745' %>">
+    <div class="container p-3 text-white">
+      <h1 class="pb-2"><%= @company.name %></h1>
+      <h4><%= "City: #{@company.city.presence || 'N/A'}, State: #{@company.state.presence || 'N/A'}" %></h4>
     </div>
   </div>
 
-  <div class="row bg-light">
-    <div class="col-12 col-lg-8 p-lg-5 pt-4">
-      <%= @company.description %>
-    </div>
-    <div class="col-12 col-lg-4 pt-lg-5">
-      <h4>Services</h4>
-      <% @company.services.reject(&:blank?).each do |service| %>
-        <p><%= service %></p>
-      <% end %>
-      <h4>Contact</h4>
-        <div class="form-group" data-controller="clipboard">
-          <p><%= @company.phone %><br>
-          <input type="hidden" value="<%= @company.phone %>" data-target="clipboard.source"></input>
-          <a data-action="clipboard#copy" class="clipboard-button pointer text-decoration-none text-dark"> copy</a>
-          <a data-target="clipboard.notice" class="clipboard-button pointer d-none text-decoration-none text-dark" class="d-none"> copied</a> 
-          </p>         
-        </div>
+  <div class="bg-light">
+    <div class="row px-3 py-5">
+      <div class="col-12 col-lg-8">
+        <%= @company.description %>
+      </div>
+      <div class="col-12 col-lg-4">
+        <h4>Services</h4>
+        <% @company.services.reject(&:blank?).each do |service| %>
+          <p><%= service %></p>
+        <% end %>
+        <hr>
+        <h4>Contact</h4>
+          <div class="form-group" data-controller="clipboard">
+            <p><%= @company.phone %><br>
+            <input type="hidden" value="<%= @company.phone %>" data-target="clipboard.source"></input>
+            <a data-action="clipboard#copy" class="clipboard-button pointer text-decoration-none text-dark"> copy</a>
+            <a data-target="clipboard.notice" class="clipboard-button pointer d-none text-decoration-none text-dark" class="d-none"> copied</a> 
+            </p>         
+          </div>
+      </div>
     </div>
   </div>
 
-  <div class="text-white text-center py-3" style="background-color: <%= @company.brand_color %>">
-    <p class="lead"><%= @company.phone %> — <%= @company.email %></p>
+  <div class="text-white text-center py-4" style="background-color: <%= @company.brand_color.presence || '#28a745' %>">
+    <p class="lead m-0"><%= @company.phone %> — <%= @company.email %></p>
   </div>
 </div>

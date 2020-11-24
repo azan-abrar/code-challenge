@@ -1,5 +1,5 @@
-<div class="py-5">
-  <%= form_for @company, html: { id: 'company-form' } do |f| %>
+<div class="pt-3 pb-5">
+  <%= form_for @company, html: { id: 'company-form', class: 'border rounded px-4 bg-light' } do |f| %>
 
     <% if @company.errors.present? %>
       <% @company.errors.each do |k, v| %>
@@ -71,7 +71,7 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :brand_color, class: 'form-control', placeholder: '#000000' %>
+          <%= f.color_field :brand_color, class: 'form-control', placeholder: '#000000' %>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@
     <div class="row my-lg-3">
       <div class="col">
         <div class="form-group">
-          <%= f.submit class: 'btn btn-success', id: 'company-form-submit' %>
+          <%= f.submit class: 'btn btn-success float-right', id: 'company-form-submit' %>
         </div>
       </div>
     </div>
